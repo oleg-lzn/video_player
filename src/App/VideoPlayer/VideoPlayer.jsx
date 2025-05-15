@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import TrimBar from "../TrimBar/TrimBar";
 import video_example_2 from "../../assets/video_example_2.mp4";
+import { captureFramesFromVideo } from "../../../utils/captureFramesFromVideo";
 
 const VideoPlayer = () => {
   const videoRef = useRef(null);
@@ -8,11 +9,14 @@ const VideoPlayer = () => {
   const [currentTime, setCurrentTime] = useState(0);
   const [trimStart, setTrimStart] = useState(0);
   const [trimEnd, setTrimEnd] = useState(0);
+  const [frames, setFrames] = useState([]);
 
-  const handleLoadedMetadata = () => {
+  const handleLoadedMetadata = async () => {
     const dur = videoRef.current?.duration || 0;
     setDuration(dur);
     setTrimEnd(dur);
+    const extractedFrames = await captureFramesFromVideo(video_example_2, 1);
+    setFrames(extractedFrames);
   };
 
   const handleTimeUpdate = () => {
@@ -44,6 +48,7 @@ const VideoPlayer = () => {
         currentTime={currentTime}
         start={trimStart}
         end={trimEnd}
+        frames={frames}
         onChangeStart={setTrimStart}
         onChangeEnd={setTrimEnd}
         onSeek={(time) => {

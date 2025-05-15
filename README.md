@@ -1,12 +1,59 @@
-# React + Vite
+Video Trimmer with Thumbnails
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a simple React-based video trimming tool that displays a video timeline with frame thumbnails and allows users to select a start and end point for trimming.
 
-Currently, two official plugins are available:
+📦 Technologies Used
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+React
 
-## Expanding the ESLint configuration
+Used as the core UI framework for component-based architecture and reactive state updates.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+HTML5 Video API
+
+Utilized via a <video> element and accessed through ref to load, play, and extract metadata from the video.
+
+Canvas API
+
+Used in captureFramesFromVideo to extract thumbnails from a hidden video element for frame previews.
+
+Inline CSS
+
+Styling is handled directly with style objects in JSX for maximum control during rapid prototyping. You can refactor this to CSS modules or Tailwind later.
+
+🎯 Features
+
+📼 Loads a video (currently hardcoded via video_example_2.mp4).
+
+🖼 Extracts thumbnails from the video using a canvas and renders them below the video.
+
+🟧 Allows users to trim the video via draggable start and end markers.
+
+⬛ Displays the current playback position as a thin white line.
+
+🟠 Highlights the selected trim region with an orange rectangle (all sides: top, bottom, left, right).
+
+🕐 Displays start and end timestamps above the trim area.
+
+📁 Current Limitations
+
+The video is hardcoded. You cannot upload or select other video files yet.
+There is no export or actual video cutting – the functionality is UI-only for now.
+
+🧩 Possible Enhancements
+
+🔼 Add file upload functionality.
+🧠 Integrate with libraries like Vidstack or ffmpeg.wasm for real trimming and export.
+🎛 Add controls for zooming on timeline or previewing frame-by-frame.
+💅 Use a styling system like Tailwind, CSS Modules or Styled Components.
+📂 File Structure
+
+VideoPlayer.jsx – Main component, controls video and passes state.
+TrimBar.jsx – The trimming UI with thumbnails and trim handles.
+captureFramesFromVideo.js – Utility to generate preview images from video.
+
+🚀 Getting Started
+
+Clone the repo
+Place your own video in /assets or modify the video_example_2 import.
+Run npm start to launch the dev server.
+Created as a lightweight tool for exploring video frame extraction and timeline interaction in React.
