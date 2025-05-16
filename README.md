@@ -59,7 +59,8 @@ This is a simple **React-based video trimming tool** that displays a video timel
 
 1. Clone the repo
 2. Place your own video in `/assets` or modify the `video_example_2` import
-3. Run `npm start` to launch the dev server
+3. Run `npm i` to install dependencies
+4. Run `npm run dev` to launch the dev server
 
 ---
 
