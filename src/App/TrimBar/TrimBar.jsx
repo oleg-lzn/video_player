@@ -1,4 +1,3 @@
-// TrimBar.jsx
 import React, { useRef, useState } from "react";
 
 function TrimBar({
